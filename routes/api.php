@@ -20,8 +20,10 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 // Route::get('/contacto', [ApiController::class,'index']); //Mostrar todos los registros
+Route::group(['middleware' => ['cors']], function () {
+    Route::post('/contacto', [ApiController::class,'store']); //Crear un registro
+});
 
-Route::post('/contacto', [ApiController::class,'store']); //Crear un registro
 
 // Route::put('/contacto/{id}', [ApiController::class,'update']); //Actualizar un registro
 
